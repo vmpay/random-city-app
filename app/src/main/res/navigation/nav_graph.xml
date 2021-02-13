@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loaderFragment">
+
+    <fragment
+        android:id="@+id/loaderFragment"
+        android:name="eu.vmpay.random.city.view.LoaderFragment"
+        android:label="fragment_loader"
+        tools:layout="@layout/fragment_loader">
+        <action
+            android:id="@+id/action_loaderFragment_to_cityListFragment"
+            app:destination="@id/cityListFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/nav_graph" />
+    </fragment>
+    <fragment
+        android:id="@+id/cityListFragment"
+        android:name="eu.vmpay.random.city.view.CityListFragment"
+        android:label="fragment_city_list"
+        tools:layout="@layout/fragment_city_list">
+        <action
+            android:id="@+id/action_cityListFragment_to_cityDetailsFragment"
+            app:destination="@id/cityDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/cityListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cityDetailsFragment"
+        android:name="eu.vmpay.random.city.view.CityDetailsFragment"
+        android:label="fragment_city_details"
+        tools:layout="@layout/fragment_city_details" />
+</navigation>

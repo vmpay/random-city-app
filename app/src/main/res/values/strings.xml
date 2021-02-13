@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Random City</string>
+    <string name="hello_blank_fragment">Loader fragment</string>
 </resources>
