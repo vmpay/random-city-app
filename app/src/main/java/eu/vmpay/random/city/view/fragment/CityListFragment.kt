@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import eu.vmpay.random.city.databinding.FragmentCityListBinding
+import eu.vmpay.random.city.viewmodel.CityListViewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -15,6 +17,7 @@ import eu.vmpay.random.city.databinding.FragmentCityListBinding
  */
 class CityListFragment : BaseFragment() {
     private var _binding: FragmentCityListBinding? = null
+    private val viewModel: CityListViewModel by viewModels { factory }
 
     // This property is only valid between onCreateView and
     // onDestroyView.

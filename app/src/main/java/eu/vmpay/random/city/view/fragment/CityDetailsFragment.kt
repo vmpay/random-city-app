@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import eu.vmpay.random.city.R
+import eu.vmpay.random.city.viewmodel.CityDetailsViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -18,6 +20,8 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class CityDetailsFragment : BaseFragment() {
+    private val viewModel: CityDetailsViewModel by viewModels { factory }
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null

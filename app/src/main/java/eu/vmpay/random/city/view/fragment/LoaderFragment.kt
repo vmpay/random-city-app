@@ -23,7 +23,7 @@ class LoaderFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentLoaderBinding.inflate(inflater, container, false)
-        val viewModel: LoaderViewModel by viewModels()
+        val viewModel: LoaderViewModel by viewModels { factory }
         viewModel.ldNavigate.observe(viewLifecycleOwner, {
             navigateTo(it)
         })
