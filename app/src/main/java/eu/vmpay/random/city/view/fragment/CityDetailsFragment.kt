@@ -33,6 +33,7 @@ class CityDetailsFragment : BaseFragment() {
             getCityById(args.uid)
             ldCityDetails.observe(viewLifecycleOwner, {
                 Log.d("CityDetailsFragment", "City $it")
+                binding.tvText.text = it.toString()
             })
         }
         return binding.root

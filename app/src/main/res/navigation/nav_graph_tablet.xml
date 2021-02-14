@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_tablet"
+    app:startDestination="@id/cityDetailsFragment">
+
+    <fragment
+        android:id="@+id/cityDetailsFragment"
+        android:name="eu.vmpay.random.city.view.fragment.CityDetailsFragment"
+        android:label="fragment_city_details"
+        tools:layout="@layout/fragment_city_details">
+        <argument
+            android:name="uid"
+            app:argType="long"
+            android:defaultValue="-1L" />
+        <action
+            android:id="@+id/action_cityDetailsFragment_self"
+            app:destination="@id/cityDetailsFragment" />
+    </fragment>
+</navigation>

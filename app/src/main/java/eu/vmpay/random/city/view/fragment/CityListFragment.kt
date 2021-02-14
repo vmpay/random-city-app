@@ -7,8 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import eu.vmpay.random.city.R
 import eu.vmpay.random.city.databinding.FragmentCityListBinding
+import eu.vmpay.random.city.databinding.FragmentCityListTabletBinding
 import eu.vmpay.random.city.viewmodel.CityListViewModel
 
 /**
@@ -17,27 +20,31 @@ import eu.vmpay.random.city.viewmodel.CityListViewModel
  * create an instance of this fragment.
  */
 class CityListFragment : BaseFragment() {
-    private var _binding: FragmentCityListBinding? = null
     private val viewModel: CityListViewModel by viewModels { factory }
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        _binding = FragmentCityListBinding.inflate(inflater, container, false)
-        binding.btnNavigate.setOnClickListener {
-            findNavController().navigate(CityListFragmentDirections.actionCityListFragmentToCityDetailsFragment(1L))
+        val rootView: View?
+        if (context?.resources?.getBoolean(R.bool.isTablet) == true) {
+            val binding = FragmentCityListTabletBinding.inflate(inflater, container, false)
+            binding.btnNavigate.setOnClickListener {
+                val navHostFragment = childFragmentManager.findFragmentById(R.id.profile_nav_container) as NavHostFragment
+                navHostFragment.navController.navigate(CityDetailsFragmentDirections.actionCityDetailsFragmentSelf(1L))
+            }
+            viewModel.ldCityList.observe(viewLifecycleOwner, {
+                it.forEach { Log.d("CityListFragment", "Mobile $it") }
+            })
+            rootView = binding.root
+        } else {
+            val binding = FragmentCityListBinding.inflate(inflater, container, false)
+            binding.btnNavigate.setOnClickListener {
+                findNavController().navigate(CityListFragmentDirections.actionCityListFragmentToCityDetailsFragment(1L))
+            }
+            viewModel.ldCityList.observe(viewLifecycleOwner, {
+                it.forEach { Log.d("CityListFragment", "Tablet $it") }
+            })
+            rootView = binding.root
         }
-        viewModel.ldCityList.observe(viewLifecycleOwner, {
-            it.forEach { Log.d("CityListFragment", "$it") }
-        })
-        return binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        return rootView
     }
 
     companion object {

@@ -40,6 +40,7 @@
         tools:layout="@layout/fragment_city_details">
         <argument
             android:name="uid"
-            app:argType="long" />
+            app:argType="long"
+            android:defaultValue="-1L" />
     </fragment>
 </navigation>
