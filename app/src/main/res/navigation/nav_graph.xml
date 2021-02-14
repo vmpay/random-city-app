@@ -37,5 +37,9 @@
         android:id="@+id/cityDetailsFragment"
         android:name="eu.vmpay.random.city.view.fragment.CityDetailsFragment"
         android:label="fragment_city_details"
-        tools:layout="@layout/fragment_city_details" />
+        tools:layout="@layout/fragment_city_details">
+        <argument
+            android:name="uid"
+            app:argType="long" />
+    </fragment>
 </navigation>

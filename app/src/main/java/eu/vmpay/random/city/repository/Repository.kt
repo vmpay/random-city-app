@@ -26,4 +26,6 @@ class Repository(private val channel: Channel<Pair<String, String>>, private val
     }
 
     fun getCityList() = cityDao.getCityList()
+
+    suspend fun getCityByUid(uid: Long) = cityDao.getCityById(uid)
 }

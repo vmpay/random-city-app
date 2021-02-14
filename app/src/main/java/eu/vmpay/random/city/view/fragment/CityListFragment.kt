@@ -27,7 +27,7 @@ class CityListFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentCityListBinding.inflate(inflater, container, false)
         binding.btnNavigate.setOnClickListener {
-            findNavController().navigate(CityListFragmentDirections.actionCityListFragmentToCityDetailsFragment())
+            findNavController().navigate(CityListFragmentDirections.actionCityListFragmentToCityDetailsFragment(1L))
         }
         viewModel.ldCityList.observe(viewLifecycleOwner, {
             it.forEach { Log.d("CityListFragment", "$it") }

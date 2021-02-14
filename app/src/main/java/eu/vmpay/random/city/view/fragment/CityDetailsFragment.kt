@@ -1,18 +1,15 @@
 package eu.vmpay.random.city.view.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import eu.vmpay.random.city.R
+import androidx.navigation.fragment.navArgs
+import eu.vmpay.random.city.databinding.FragmentCityDetailsBinding
 import eu.vmpay.random.city.viewmodel.CityDetailsViewModel
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
@@ -20,24 +17,25 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class CityDetailsFragment : BaseFragment() {
+    private var _binding: FragmentCityDetailsBinding? = null
     private val viewModel: CityDetailsViewModel by viewModels { factory }
+    private val args: CityDetailsFragmentArgs by navArgs()
 
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_city_details, container, false)
+                              savedInstanceState: Bundle?): View {
+        _binding = FragmentCityDetailsBinding.inflate(inflater, container, false)
+        // Passing only uid may help us in future with dynamic links integration
+        viewModel.apply {
+            getCityById(args.uid)
+            ldCityDetails.observe(viewLifecycleOwner, {
+                Log.d("CityDetailsFragment", "City $it")
+            })
+        }
+        return binding.root
     }
 
     companion object {
@@ -45,18 +43,9 @@ class CityDetailsFragment : BaseFragment() {
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.
          *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
          * @return A new instance of fragment CityDetailsFragment.
          */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-                CityDetailsFragment().apply {
-                    arguments = Bundle().apply {
-                        putString(ARG_PARAM1, param1)
-                        putString(ARG_PARAM2, param2)
-                    }
-                }
+        fun newInstance() = CityDetailsFragment()
     }
 }

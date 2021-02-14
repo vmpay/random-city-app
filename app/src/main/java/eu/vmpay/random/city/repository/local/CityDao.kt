@@ -11,5 +11,5 @@ abstract class CityDao : BaseDao<CityModel>() {
     abstract fun getCityList(): Flow<List<CityModel>>
 
     @Query("SELECT * FROM city_table WHERE uid LIKE :uid")
-    abstract fun getCityById(uid: Long): Flow<List<CityModel>>
+    abstract suspend fun getCityById(uid: Long): CityModel?
 }
