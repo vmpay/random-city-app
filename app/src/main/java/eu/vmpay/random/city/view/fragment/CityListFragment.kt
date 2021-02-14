@@ -1,6 +1,7 @@
 package eu.vmpay.random.city.view.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,6 +29,9 @@ class CityListFragment : BaseFragment() {
         binding.btnNavigate.setOnClickListener {
             findNavController().navigate(CityListFragmentDirections.actionCityListFragmentToCityDetailsFragment())
         }
+        viewModel.ldCityList.observe(viewLifecycleOwner, {
+            it.forEach { Log.d("CityListFragment", "$it") }
+        })
         return binding.root
     }
 

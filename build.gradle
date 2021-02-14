@@ -6,6 +6,7 @@ buildscript {
         viewmodel_version = "2.3.0"
         coroutines_version = "1.4.1"
         koin_version = "2.1.4"
+        room_version = "2.2.6"
     }
     repositories {
         google()
