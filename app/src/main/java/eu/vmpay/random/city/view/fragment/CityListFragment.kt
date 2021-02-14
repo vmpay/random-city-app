@@ -1,4 +1,4 @@
-package eu.vmpay.random.city.view
+package eu.vmpay.random.city.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,7 +13,7 @@ import eu.vmpay.random.city.databinding.FragmentCityListBinding
  * Use the [CityListFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class CityListFragment : Fragment() {
+class CityListFragment : BaseFragment() {
     private var _binding: FragmentCityListBinding? = null
 
     // This property is only valid between onCreateView and

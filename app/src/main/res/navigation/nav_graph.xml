@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loaderFragment"
-        android:name="eu.vmpay.random.city.view.LoaderFragment"
+        android:name="eu.vmpay.random.city.view.fragment.LoaderFragment"
         android:label="fragment_loader"
         tools:layout="@layout/fragment_loader">
         <action
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/cityListFragment"
-        android:name="eu.vmpay.random.city.view.CityListFragment"
+        android:name="eu.vmpay.random.city.view.fragment.CityListFragment"
         android:label="fragment_city_list"
         tools:layout="@layout/fragment_city_list">
         <action
@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/cityDetailsFragment"
-        android:name="eu.vmpay.random.city.view.CityDetailsFragment"
+        android:name="eu.vmpay.random.city.view.fragment.CityDetailsFragment"
         android:label="fragment_city_details"
         tools:layout="@layout/fragment_city_details" />
 </navigation>

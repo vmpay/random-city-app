@@ -1,4 +1,4 @@
-package eu.vmpay.random.city.view
+package eu.vmpay.random.city.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,7 +17,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [CityDetailsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class CityDetailsFragment : Fragment() {
+class CityDetailsFragment : BaseFragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
