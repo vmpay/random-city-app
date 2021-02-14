@@ -1,4 +1,6 @@
 package eu.vmpay.random.city.viewmodel
 
-class CityListViewModel : BaseViewModel() {
+import eu.vmpay.random.city.repository.Repository
+
+class CityListViewModel(repository: Repository) : BaseViewModel(repository) {
 }

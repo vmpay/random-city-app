@@ -10,13 +10,13 @@ class ViewModelFactory(private val repository: Repository) : ViewModelProvider.F
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return when (modelClass) {
             LoaderViewModel::class.java -> {
-                LoaderViewModel() as T
+                LoaderViewModel(repository) as T
             }
             CityListViewModel::class.java -> {
-                CityListViewModel() as T
+                CityListViewModel(repository) as T
             }
             CityDetailsViewModel::class.java -> {
-                CityDetailsViewModel() as T
+                CityDetailsViewModel(repository) as T
             }
             else -> {
                 throw IllegalArgumentException("unknown model class $modelClass")
