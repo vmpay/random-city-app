@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import eu.vmpay.random.city.R
 import eu.vmpay.random.city.databinding.FragmentCityListBinding
 import eu.vmpay.random.city.databinding.FragmentCityListTabletBinding
+import eu.vmpay.random.city.view.adapter.CityListAdapter
 import eu.vmpay.random.city.viewmodel.CityListViewModel
 
 /**
@@ -26,21 +27,25 @@ class CityListFragment : BaseFragment() {
         val rootView: View?
         if (context?.resources?.getBoolean(R.bool.isTablet) == true) {
             val binding = FragmentCityListTabletBinding.inflate(inflater, container, false)
-            binding.btnNavigate.setOnClickListener {
+            val adapter = CityListAdapter() {
                 val navHostFragment = childFragmentManager.findFragmentById(R.id.profile_nav_container) as NavHostFragment
-                navHostFragment.navController.navigate(CityDetailsFragmentDirections.actionCityDetailsFragmentSelf(1L))
+                navHostFragment.navController.navigate(CityDetailsFragmentDirections.actionCityDetailsFragmentSelf(it.uid))
             }
+            binding.rvList.adapter = adapter
             viewModel.ldCityList.observe(viewLifecycleOwner, {
                 it.forEach { Log.d("CityListFragment", "Mobile $it") }
+                adapter.submitList(it)
             })
             rootView = binding.root
         } else {
             val binding = FragmentCityListBinding.inflate(inflater, container, false)
-            binding.btnNavigate.setOnClickListener {
-                findNavController().navigate(CityListFragmentDirections.actionCityListFragmentToCityDetailsFragment(1L))
+            val adapter = CityListAdapter() {
+                findNavController().navigate(CityListFragmentDirections.actionCityListFragmentToCityDetailsFragment(it.uid))
             }
+            binding.rvList.adapter = adapter
             viewModel.ldCityList.observe(viewLifecycleOwner, {
                 it.forEach { Log.d("CityListFragment", "Tablet $it") }
+                adapter.submitList(it)
             })
             rootView = binding.root
         }
