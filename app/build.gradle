@@ -16,6 +16,14 @@ android {
         versionCode 1
         versionName "1.0"
 
+        Properties properties = new Properties()
+        if (rootProject.file("local.properties").exists()) {
+            properties.load(rootProject.file("local.properties").newDataInputStream())
+        }
+
+        // Inject the Maps API key into the manifest
+        manifestPlaceholders = [ mapsApiKey : properties.getProperty("MAPS_API_KEY", "") ]
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -59,6 +67,8 @@ dependencies {
 
     // DI
     implementation "org.koin:koin-androidx-viewmodel:$rootProject.koin_version"
+
+    implementation "com.google.android.gms:play-services-maps:$rootProject.map_version"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
