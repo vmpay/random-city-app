@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import eu.vmpay.random.city.R
 import eu.vmpay.random.city.databinding.FragmentCityListBinding
 import eu.vmpay.random.city.databinding.FragmentCityListTabletBinding
+import eu.vmpay.random.city.view.MainActivity
 import eu.vmpay.random.city.view.adapter.CityListAdapter
 import eu.vmpay.random.city.viewmodel.CityListViewModel
 
@@ -24,6 +25,7 @@ class CityListFragment : BaseFragment() {
     private val viewModel: CityListViewModel by viewModels { factory }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        (activity as? MainActivity)?.showToolbar()
         val rootView: View?
         if (context?.resources?.getBoolean(R.bool.isTablet) == true) {
             val binding = FragmentCityListTabletBinding.inflate(inflater, container, false)

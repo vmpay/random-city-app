@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import eu.vmpay.random.city.databinding.FragmentCityDetailsBinding
+import eu.vmpay.random.city.tools.getFixedColor
+import eu.vmpay.random.city.view.MainActivity
 import eu.vmpay.random.city.viewmodel.CityDetailsViewModel
 
 /**
@@ -34,9 +36,15 @@ class CityDetailsFragment : BaseFragment() {
             ldCityDetails.observe(viewLifecycleOwner, {
                 Log.d("CityDetailsFragment", "City $it")
                 binding.tvText.text = it.toString()
+                (activity as? MainActivity)?.setToolbarTitleColor(it.title, it.color.getFixedColor())
             })
         }
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        (activity as? MainActivity)?.setToolbarTitleColor()
+        super.onDestroyView()
     }
 
     companion object {
