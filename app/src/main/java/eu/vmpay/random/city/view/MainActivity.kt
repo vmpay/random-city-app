@@ -10,6 +10,7 @@ class MainActivity : AppCompatActivity() {
     private val producer: Producer by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_RandomCity)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
