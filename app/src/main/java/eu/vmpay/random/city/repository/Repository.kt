@@ -27,5 +27,13 @@ class Repository(private val channel: Channel<Pair<String, String>>, private val
 
     fun getCityList() = cityDao.getCityList()
 
+    /**
+     * Method documentation example
+     *
+     * This suspend function gets @see[CityModel] from local data source
+     *
+     * @param uid unique identifier of the city in the data source
+     * @return instance of @see[CityModel] if match the uid, otherwise - null
+     */
     suspend fun getCityByUid(uid: Long) = cityDao.getCityById(uid)
 }

@@ -10,3 +10,5 @@ const val DATABASE_VERSION = 1
 const val DATABASE_NAME = "city_app.db"
 
 val sdf = SimpleDateFormat("dd.MM.yy HH:mm:ss", Locale.ROOT)
+
+const val ERROR_MESSAGE = "Item not found"
