@@ -10,6 +10,7 @@ enum class FixedColors(val color: Int) {
     BLUE(Color.BLUE),
     BLACK(Color.BLACK),
     WHITE(Color.WHITE),
+    RED(Color.RED),
 }
 
 @ColorInt
